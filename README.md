@@ -5,6 +5,7 @@ This is an online auction app system, built with python django framework.
 The app is live at: https://shifats-auction-app.herokuapp.com/
 <br>
 
+Steps Followed:
 
 ### Step-1
 
