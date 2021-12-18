@@ -4,11 +4,7 @@ This is an online auction app system, built with python django framework.
 
 The app is live at: https://shifats-auction-app.herokuapp.com/
 <br>
-Issues: The media files are not loading due to debug=False, adding a database server should resolve this problem
 
-While running locally, from settings.py change to debug=True
-
-Here are the steps followed through out the building process:
 
 ### Step-1
 
@@ -80,3 +76,6 @@ Here are the steps followed through out the building process:
     * https://stackoverflow.com/questions/60128838/django-datetimeinput-type-datetime-local-not-saving-to-database
     * https://stackoverflow.com/questions/4945802/how-can-i-disable-a-model-field-in-a-django-form
     * https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django
+
+### Issues
+As no external database service like aws is provided so DEBUG=False will not be able to handle the media files as expected. The reason why DEBUG=True is kept in the deployment.
