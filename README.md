@@ -3,7 +3,10 @@
 This is an online auction app system, built with python django framework.
 
 The app is live at: https://shifats-auction-app.herokuapp.com/
-Issues: The media files are not loading due to debug=True
+<br>
+Issues: The media files are not loading due to debug=False, adding a database server should resolve this problem
+
+While running locally, from settings.py change to debug=True
 
 Here are the steps followed through out the building process:
 
