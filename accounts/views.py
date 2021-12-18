@@ -1,4 +1,5 @@
 import datetime
+import pytz
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -76,8 +77,8 @@ def product_details(request, pk):
     bidders = Bidder.objects.filter(auction_product_id=pk).order_by('-bid_amount')
     winner = bidders.first
     current_user_as_bidder = Bidder.objects.filter(auction_product_id=pk, bidder=request.user)
-    today =  datetime.datetime.now()
-
+    tz = pytz.timezone('Asia/Dhaka')
+    today =  datetime.datetime.now(tz=tz)
     context = {
         'product': product,
         'bidders': bidders,

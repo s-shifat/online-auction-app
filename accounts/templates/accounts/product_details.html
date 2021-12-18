@@ -39,7 +39,7 @@
                     <li class="list-group-item"><b>Description:</b> {{product.product_description}}</li>
                     <li class="list-group-item"><b>Minimum Bid:</b> {{product.minimum_bid_price}} BDT</li>
                     <li class="list-group-item"><b>Ends at:</b> {{product.auction_end_date_time}}</li>
-                    {% if product.auction_end_date_time.date < today.date and product.auction_end_date_time.time < today.time  %}
+                    {% if today.date > product.auction_end_date_time.date and  today.date > product.auction_end_date_time.date %}
                         <li class="list-group-item">Auction Ended. <br> Winner is {{winner.bidder}}</li>
                     {% elif current_user_as_bidder %}
                         <li class="list-group-item">
