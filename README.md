@@ -46,13 +46,15 @@ Steps Followed:
 
 1. Learnt django framework. Took help from youtube and the beautiful djnago documentation. 
 2. The very first challenge was user authentication system. I took help from youtube and django documentations to overcome this.
-3. Designing the database: I had some knowledge about how relational databases work and sql. So after spending some time in the documentation I was able to design the database for this project.
-4. Database operations: Learnt how to do basic crud and querry operations on django models.
-5. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
-6. Though I have basic knowledge about html5 stack, I never worked with bootstrap before. I found out that bootstrap has a very well documentation and gained a better knowledge on bootstrap.
-7. I learnt how I can add custom styling to django model form objects by modifiying the attributes using python code.
-8. Timezones: used python pytz to match python's builtin datetime objects with django datetime objects. Timezone used Asia/Dhaka.
-9. Deploying to Heroku.
+3. Used custom python wrapper to manage logged in users to not be able to go to login or registration pages.
+4. In some cases reversing from a dynamic page to previous dynamic page is needed. For that I looked up in the official documentation how to implement this funciotnality.
+5. Designing the database: I had some knowledge about how relational databases work and sql. So after spending some time in the documentation I was able to design the database for this project.
+6. Database operations: Learnt how to do basic crud and querry operations on django models.
+7. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
+8. Though I have basic knowledge about html5 stack, I never worked with bootstrap before. I found out that bootstrap has a very well documentation and gained a better knowledge on bootstrap.
+9. I learnt how I can add custom styling to django model form objects by modifiying the attributes using python code.
+10. Timezones: used python pytz to match python's builtin datetime objects with django datetime objects. Timezone used Asia/Dhaka.
+11. Deploying to Heroku.
 
 ### Packages Used
 1. Bootstrap for frontend styling
@@ -87,6 +89,11 @@ Steps Followed:
 
 ### Issues
 As no external database service like aws is provided so DEBUG=False will not be able to handle the media files as expected. The reason why DEBUG=True is kept in the deployment.
+
+### Future Goals
+1. Convert the view functions to class views to implement cleaner and more efficient code.
+2. Complete the admin dashboard
+3. Implement styling to the form views.
 
 ### Sample User Credentials
 username: shifat
