@@ -53,6 +53,12 @@ Steps Followed:
 7. I learnt how I can add custom styling to django model form objects by modifiying the attributes using python code.
 8. Deploying to Heroku.
 
+### Packages Used
+1. Bootstrap for frontend styling
+2. pytz for managing timezone. I used 'Asia/Dhaka'
+3. Pillow for managing images
+4. gunicorn and whitenoise for heroku deployment
+
 ### Out Come
 1. Learnt user authentication system 
 2. URL routings
