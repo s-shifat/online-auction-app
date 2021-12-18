@@ -52,7 +52,7 @@ Here are the steps followed through out the building process:
 3. Designing the database: I had some knowledge about how relational databases work and sql. So after spending some time in the documentation I was able to design the database for this project.
 4. Database operations: Learnt how to do basic crud and querry operations on django models.
 5. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
-6. 
+6. Though I have basic knowledge about html5 stack, I never worked with bootstrap before. I found out that bootstrap has a very well documentation and gained a better knowledge on bootstrap.
 7. Deploying to Heroku.
 
 ### Out Come
