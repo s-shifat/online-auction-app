@@ -16,3 +16,25 @@ Here are the steps followed through out the building process:
 
 5. Styled the pages with css and bootstrap.
 
+### Step-2
+
+1. Implemented a gallery view.
+2. Added login restrictions to relevent pages.
+3. Added a create button that gets the user to a form page to post a new auction item.
+4. Added another functionality so that a user can place bids but not the post owner.
+
+### Step-3
+
+1. Added functionality so that the users can interect the auciton posts with in auction end date and time.
+2. During this time users can update or delete there bids.
+
+### Step-4
+1. After an auction finishes the interactibility of the post will be disabled and the winner will be showd in the page.
+
+### Step-5
+1. Added the appropriate routing for admin dashboard.
+2. The admin dashboard is not completed as required yet.
+
+### Step-6
+1. Added some custom styling with help of bootstrap 4 in different views. Though the forms are not styled yet.
+
