@@ -44,3 +44,18 @@ Here are the steps followed through out the building process:
 ### Step-6
 1. Added some custom styling with help of bootstrap 4 in different views. Though the forms are not styled yet.
 
+
+### Challanges Faced
+
+1. Learnt django framework. Took help from [Dennis Ivy's youtube channel](https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg) and the beautiful djnago documentation.
+2. Deploying to Heroku.
+
+### Out Come
+1. Learnt user authentication system 
+2. URL routings
+3. Bootstrap
+4. django database models
+5. django forms
+6. user specific url routing
+7. managing static and media files
+8. deployment to heroku
