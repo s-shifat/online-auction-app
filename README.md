@@ -3,7 +3,7 @@
 This is an online auction app system, built with python django framework.
 
 The app is live at: https://shifats-auction-app.herokuapp.com/
-Issues: The media files are not loading due to dyno auto sleep
+Issues: The media files are not loading due to debug=True
 
 Here are the steps followed through out the building process:
 
