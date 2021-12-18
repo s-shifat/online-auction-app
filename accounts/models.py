@@ -1,15 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os
+import uuid
 
+# https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django
 def get_file_name(instance, filename):
-    extension = filename.split('.')[-1]
-    if instance.pk:
-        return f"images/{instance.pk}.{extension}"
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join('images', filename)
 
 # Create your models here.
 class AuctionProduct(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    product_name = models.CharField(max_length=200)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product_name = models.CharField(max_length=200, null=True)
     product_description = models.TextField(null=True)
     product_photo = models.ImageField(null=True, blank=True, upload_to=get_file_name)
     minimum_bid_price = models.DecimalField(max_digits=12, decimal_places=2)
