@@ -1,7 +1,9 @@
+import django
 from django.db import models
 from django.contrib.auth.models import User
 import os
 import uuid
+import datetime
 
 # https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django
 def get_file_name(instance, filename):
@@ -18,6 +20,11 @@ class AuctionProduct(models.Model):
     minimum_bid_price = models.DecimalField(max_digits=12, decimal_places=2)
     auction_end_date_time = models.DateTimeField()
     date_created = models.DateTimeField(auto_now_add=True)
+
+    # @property
+    # def auction_ended(self):
+    #     return datetime.datetime.now() > self.auction_end_date_time
+
 
     def __str__(self):
         return self.product_name

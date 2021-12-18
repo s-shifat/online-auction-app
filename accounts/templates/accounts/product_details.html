@@ -1,6 +1,7 @@
 {% extends 'accounts/base.html' %}
 
 {% block content %}
+
 <style>
     .product-div {
         width: 550px;
@@ -19,15 +20,16 @@
                     <img class="card-img-top" src="{{product.product_photo.url}}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{product.product_name}}</h5>
+                        
                         <p class="card-text">Posted By <i>{{product.user_id.username}}</i></p>
-                        <!-- user specific button -->
+        
                         {% if product.user_id == request.user %}
-                            <a href="{% url 'update-auction-product' product.id %}" class="btn btn-warning">Edit</a>
-                            <a href="{% url 'delete-auction-product' product.id %}" class="btn btn-danger">Delete</a>
+                                <a href="{% url 'update-auction-product' product.id %}" class="btn btn-warning">Edit</a>
+                                <a href="{% url 'delete-auction-product' product.id %}" class="btn btn-danger">Delete</a>
                         {% elif current_user_as_bidder %}
-                            <p></p>
+                                <p></p>
                         {% else %}
-                            <a href="{% url 'add-bid' product.id %}" class="btn btn-success">Bid</a>
+                                <a href="{% url 'add-bid' product.id %}" class="btn btn-success">Bid</a>
                         {% endif %}
                     </div>
                 </div>
@@ -36,7 +38,10 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Description:</b> {{product.product_description}}</li>
                     <li class="list-group-item"><b>Minimum Bid:</b> {{product.minimum_bid_price}} BDT</li>
-                    {% if current_user_as_bidder %}
+                    <li class="list-group-item"><b>Ends at:</b> {{product.auction_end_date_time}}</li>
+                    {% if product.auction_end_date_time.date < today.date and product.auction_end_date_time.time < today.time  %}
+                        <li class="list-group-item">Auction Ended. <br> Winner is {{winner.bidder}}</li>
+                    {% elif current_user_as_bidder %}
                         <li class="list-group-item">
                             <strong>Your Bid: </strong> {{current_user_as_bidder.first.bid_amount}} BDT
                             <br>
@@ -45,7 +50,7 @@
                         </li>
                         
                     {% endif %}
-                    <li class="list-group-item"><b>Ends at:</b> {{product.auction_end_date_time}}</li>
+                    
                 </ul>
             </div>
         </div>

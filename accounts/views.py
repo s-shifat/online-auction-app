@@ -1,3 +1,4 @@
+import datetime
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -58,26 +59,31 @@ def user_logout(request):
 @login_required(login_url='login')
 def gallery(request):
     auction_products = AuctionProduct.objects.all()
-    context = {'products': auction_products}
+    context = {'products': auction_products, 'prompt': 'Auction Gallery'}
     return render(request, 'accounts/gallery.html', context)
 
 @login_required(login_url='login')
 def my_posted_items(request):
     uid = request.user.id
-    my_products = AuctionProduct.objects.filter(user_id=uid)
-    context = {'products': my_products}
+    my_products = AuctionProduct.objects.filter(user_id=uid).order_by('-date_created')
+    context = {'products': my_products, 'prompt': 'My Auction Items'}
     return render(request, 'accounts/gallery.html', context)
 
 
 @login_required(login_url='login')
 def product_details(request, pk):
     product = AuctionProduct.objects.get(id=pk)
-    bidders = Bidder.objects.filter(auction_product_id=pk)
+    bidders = Bidder.objects.filter(auction_product_id=pk).order_by('-bid_amount')
+    winner = bidders.first
     current_user_as_bidder = Bidder.objects.filter(auction_product_id=pk, bidder=request.user)
+    today =  datetime.datetime.now()
+
     context = {
         'product': product,
         'bidders': bidders,
-        'current_user_as_bidder': current_user_as_bidder
+        'current_user_as_bidder': current_user_as_bidder,
+        'today': today,
+        'winner': winner,
     }
     return render(request, 'accounts/product_details.html', context)
 
