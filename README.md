@@ -32,7 +32,7 @@ Steps Followed:
 2. During this time users can update or delete there bids.
 
 ### Step-4
-1. After an auction finishes the interactibility of the post will be disabled and the winner will be showd in the page.
+1. After an auction finishes the interactibility of the post will be disabled and the winner will be shown in the page.
 
 ### Step-5
 1. Added the appropriate routing for admin dashboard.
@@ -51,7 +51,8 @@ Steps Followed:
 5. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
 6. Though I have basic knowledge about html5 stack, I never worked with bootstrap before. I found out that bootstrap has a very well documentation and gained a better knowledge on bootstrap.
 7. I learnt how I can add custom styling to django model form objects by modifiying the attributes using python code.
-8. Deploying to Heroku.
+8. Timezones: used python pytz to match python's builtin datetime objects with django datetime objects. Timezone used Asia/Dhaka.
+9. Deploying to Heroku.
 
 ### Packages Used
 1. Bootstrap for frontend styling
