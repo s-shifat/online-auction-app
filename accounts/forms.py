@@ -31,7 +31,7 @@ class AuctionProductForm(ModelForm):
         widgets = {
             'auction_end_date_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             # 'user_id': forms.Textarea(attrs={'cols': 30, 'rows': 1})
-            'user_id': forms.HiddenInput()
+            'user_id': forms.HiddenInput(),
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,7 +47,7 @@ class BidderForm(ModelForm):
         ]
         widgets = {
             'bidder': forms.HiddenInput(),
-            'auction_product_id': forms.HiddenInput()
+            'auction_product_id': forms.HiddenInput(),
         }
 
     def __init__(self, *args, **kwargs):

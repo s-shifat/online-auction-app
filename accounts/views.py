@@ -181,3 +181,15 @@ def delete_bid(request, pk):
 
 
 ##############################################################################
+
+#---Admin Only---############################################################
+
+def view_dashboard(request):
+    products = AuctionProduct.objects.all()
+    bidders = Bidder.objects.all()
+    
+    context = {'products': products, 'bidders': bidders}
+    return render(request, 'accounts/dashboard.html', context)
+
+
+#############################################################################

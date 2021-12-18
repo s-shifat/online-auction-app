@@ -25,5 +25,8 @@ urlpatterns = [
     path('update-bid/<str:pk>/', views.update_bid, name='update-bid'),
     path('delete-bid/<str:pk>/', views.delete_bid, name='delete-bid'),
 
+    # Admin Only
+    path('dashboard/', views.view_dashboard, name='dashboard'),
+
 ]
 

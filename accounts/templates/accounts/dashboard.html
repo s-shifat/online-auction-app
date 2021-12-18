@@ -2,6 +2,22 @@
 
 {% block content %}
 
-<h1>Dashboard</h1>
+<h1>Admin Dashboard</h1>
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">Total Bids</h5>
+    <p class="card-text">{{products.count}}</p>
+    <!-- <a href="#" class="btn btn-primary">Button</a> -->
+  </div>
+</div>
 
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">Total Bids</h5>
+    <p class="card-text">
+        {{on_going}}
+    </p>
+    <!-- <a href="#" class="btn btn-primary">Button</a> -->
+  </div>
+</div>
 {% endblock %}
