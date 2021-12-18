@@ -53,7 +53,8 @@ Here are the steps followed through out the building process:
 4. Database operations: Learnt how to do basic crud and querry operations on django models.
 5. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
 6. Though I have basic knowledge about html5 stack, I never worked with bootstrap before. I found out that bootstrap has a very well documentation and gained a better knowledge on bootstrap.
-7. Deploying to Heroku.
+7. I learnt how I can add custom styling to django model form objects by modifiying the attributes using python code.
+8. Deploying to Heroku.
 
 ### Out Come
 1. Learnt user authentication system 
@@ -68,3 +69,14 @@ Here are the steps followed through out the building process:
 10. django templates
 11. djnago models crud operations
 12. working with date and time
+
+### Some References where I took help from
+1. [Django Documentation](https://docs.djangoproject.com/en/4.0/)
+2. [Tech With Tim](https://www.youtube.com/c/TechWithTim)
+3. [Dennis Ivy](https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg)
+4. [John Elder from codemy.com](https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw)
+5. [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)
+6. Some Stack Overflow Searches:
+    * https://stackoverflow.com/questions/60128838/django-datetimeinput-type-datetime-local-not-saving-to-database
+    * https://stackoverflow.com/questions/4945802/how-can-i-disable-a-model-field-in-a-django-form
+    * https://stackoverflow.com/questions/2673647/enforce-unique-upload-file-names-using-django
