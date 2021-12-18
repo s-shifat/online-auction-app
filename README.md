@@ -79,3 +79,10 @@ The app is live at: https://shifats-auction-app.herokuapp.com/
 
 ### Issues
 As no external database service like aws is provided so DEBUG=False will not be able to handle the media files as expected. The reason why DEBUG=True is kept in the deployment.
+
+### Sample User Credentials
+username: shifat
+password: Brave1234
+
+username: ashique
+password: Brave1234
