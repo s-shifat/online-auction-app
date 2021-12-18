@@ -47,8 +47,13 @@ Here are the steps followed through out the building process:
 
 ### Challanges Faced
 
-1. Learnt django framework. Took help from [Dennis Ivy's youtube channel](https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg) and the beautiful djnago documentation.
-2. Deploying to Heroku.
+1. Learnt django framework. Took help from youtube and the beautiful djnago documentation. 
+2. The very first challenge was user authentication system. I took help from youtube and django documentations to overcome this.
+3. Designing the database: I had some knowledge about how relational databases work and sql. So after spending some time in the documentation I was able to design the database for this project.
+4. Database operations: Learnt how to do basic crud and querry operations on django models.
+5. Upload image to server and render the image: At first it was not functioning correctly as expected. So I researced how to make it work in the internet. Several stack overflow posts helped me out here. I learned how POST method works for images and files works a bit differently than that for text/strings.
+6. 
+7. Deploying to Heroku.
 
 ### Out Come
 1. Learnt user authentication system 
@@ -59,3 +64,7 @@ Here are the steps followed through out the building process:
 6. user specific url routing
 7. managing static and media files
 8. deployment to heroku
+9. function base views
+10. django templates
+11. djnago models crud operations
+12. working with date and time
