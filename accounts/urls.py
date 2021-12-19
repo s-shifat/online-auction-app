@@ -6,8 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     # Authentication
-    path('registration/', views.user_registration, name='registration'),
-    path('login/', views.user_login, name='login'),
+    path('login/', views.user_login_or_sign_up, name='login'),
     path('logout/', views.user_logout, name='logout'),
 
     # Navigation
