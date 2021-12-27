@@ -11,9 +11,40 @@ def is_validated_bid(amount, min_bid):
     return amount >= min_bid
 
 class UserRegistrationForm(UserCreationForm):
+    # https://stackoverflow.com/a/62503138
+    password1 = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={
+            'id': 'pass',
+            'type': 'password',
+            'class': 'input',
+            'data-type': 'password',
+        }),
+    )
+    password2 = forms.CharField(
+        label="Confirm Password",
+        widget=forms.PasswordInput(attrs={
+            'id': 'pass',
+            'type': 'password',
+            'class': 'input',
+            'data-type': 'password',
+        }),
+    )
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'id': 'user',
+                'type': 'text',
+                'class': 'input',
+            }),
+            'email': forms.EmailInput(attrs={
+                'id': 'pass',
+                'class': 'input',
+                'type': 'text',
+            }),
+        }
 
 class AuctionProductForm(ModelForm):
     class Meta:

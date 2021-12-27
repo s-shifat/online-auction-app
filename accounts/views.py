@@ -16,36 +16,36 @@ from .decorators import unauthenticated_user
 #---Authentication---##########################################################
 
 @unauthenticated_user
-def user_registration(request):
+def user_login_or_sign_up(request):
     form = UserRegistrationForm()
+
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            messages.success(request, f'Account was created for {username}')
+        # registration
+        if request.POST.get('submit') == 'Sign Up':
+            form = UserRegistrationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password1')
+                messages.success(request, f'Account was created for {username}')
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                return redirect('gallery')
+
+        # login
+        elif request.POST.get('submit') == 'Sign In':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
             user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('gallery')
+            if user is not None:
+                login(request, user)
+                return redirect('gallery')
+            else:
+                # meaning user doesn't exist
+                messages.info(request, 'Username Or Password incorrect!')
 
     context = {'form': form}
-    return render(request, 'accounts/registration.html', context)
-
-@unauthenticated_user
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('gallery')
-        else:
-            # meaning user doesn't exist
-            messages.info(request, 'Username Or Password incorrect!')
-    context = {}
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/signin_signup.html', context)
 
 def user_logout(request):
     logout(request)
