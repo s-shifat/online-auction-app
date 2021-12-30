@@ -193,8 +193,8 @@ def view_dashboard(request):
     today =  datetime.datetime.now(tz=tz)
     live_auctions = products.filter(auction_end_date_time__gte=today) 
     ended_auctions = products.filter(auction_end_date_time__lt=today) 
-    number_of_auctions_on_going = live_auctions.count()
-    number_of_auctions_ended = ended_auctions.count()
+    number_of_live_auctions = live_auctions.count()
+    number_of_auctions_completed = ended_auctions.count()
 
     # Querrying the highest bid amount per products
     sum_of_products_worth_by_group = (
@@ -220,16 +220,15 @@ def view_dashboard(request):
             .filter(auction_product_id__auction_end_date_time__lt=today)
             .aggregate(Sum('max_bid'))['max_bid__sum']
     ) or '---'
+
+    counts = [products.count(), number_of_live_auctions, number_of_auctions_completed]
+    sums = [sum_of_all_products_worth, sum_of_live_products_worth, sum_of_completed_products_worth]
     
     context = {
         'products': products,
         'bidders': bidders,
         'today': today,
-        'auctions_on_going': number_of_auctions_on_going,
-        'auctions_ended': number_of_auctions_ended,
-        'total_worth': sum_of_all_products_worth,
-        'total_live_worth': sum_of_live_products_worth,
-        'total_completed_worth': sum_of_completed_products_worth,
+        'numerical_stats': zip(counts, sums),
     }
     return render(request, 'accounts/dashboard.html', context)
 
