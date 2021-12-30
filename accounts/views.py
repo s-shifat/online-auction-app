@@ -1,4 +1,5 @@
 import datetime
+from django.db.models.aggregates import Max, Sum
 import pytz
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -188,8 +189,48 @@ def delete_bid(request, pk):
 def view_dashboard(request):
     products = AuctionProduct.objects.all()
     bidders = Bidder.objects.all()
+    tz = pytz.timezone('Asia/Dhaka')
+    today =  datetime.datetime.now(tz=tz)
+    live_auctions = products.filter(auction_end_date_time__gte=today) 
+    ended_auctions = products.filter(auction_end_date_time__lt=today) 
+    number_of_auctions_on_going = live_auctions.count()
+    number_of_auctions_ended = ended_auctions.count()
+
+    # Querrying the highest bid amount per products
+    sum_of_products_worth_by_group = (
+        Bidder
+            .objects
+            .values('auction_product_id')
+            .annotate(max_bid=Max('bid_amount'))
+            .order_by()
+    )
+
+    # Querry of worth stats
+    sum_of_all_products_worth = (
+        sum_of_products_worth_by_group
+            .aggregate(Sum('max_bid'))['max_bid__sum']
+    ) or '---'
+    sum_of_live_products_worth = (
+        sum_of_products_worth_by_group
+            .filter(auction_product_id__auction_end_date_time__gte=today)
+            .aggregate(Sum('max_bid'))['max_bid__sum']
+    ) or '---'
+    sum_of_completed_products_worth = (
+        sum_of_products_worth_by_group
+            .filter(auction_product_id__auction_end_date_time__lt=today)
+            .aggregate(Sum('max_bid'))['max_bid__sum']
+    ) or '---'
     
-    context = {'products': products, 'bidders': bidders}
+    context = {
+        'products': products,
+        'bidders': bidders,
+        'today': today,
+        'auctions_on_going': number_of_auctions_on_going,
+        'auctions_ended': number_of_auctions_ended,
+        'total_worth': sum_of_all_products_worth,
+        'total_live_worth': sum_of_live_products_worth,
+        'total_completed_worth': sum_of_completed_products_worth,
+    }
     return render(request, 'accounts/dashboard.html', context)
 
 

@@ -3,21 +3,40 @@
 {% block content %}
 
 <h1>Admin Dashboard</h1>
-<div class="card w-50">
-  <div class="card-body">
-    <h5 class="card-title">Total Bids</h5>
-    <p class="card-text">{{products.count}}</p>
-    <!-- <a href="#" class="btn btn-primary">Button</a> -->
-  </div>
-</div>
 
-<div class="card w-50">
-  <div class="card-body">
-    <h5 class="card-title">Total Bids</h5>
-    <p class="card-text">
-        {{on_going}}
-    </p>
-    <!-- <a href="#" class="btn btn-primary">Button</a> -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Bids</h5>
+          <p class="card-text">{{products.count}}</p>
+          <h5 class="card-title">Worth</h5>
+          <p class="card-text">{{total_worth}} BDT</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Active Auctions</h5>
+          <p class="card-text">{{auctions_on_going}}</p>
+          <h5 class="card-title">Worth</h5>
+          <p class="card-text">{{total_live_worth}} BDT</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Completed Auctions</h5>
+          <p class="card-text">{{auctions_ended}}</p>
+          <h5 class="card-title">Worth</h5>
+          <p class="card-text">{{total_completed_worth}} BDT</p>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 {% endblock %}
