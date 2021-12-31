@@ -6,11 +6,11 @@
 
 <div class="container">
     <div class="row">
-      {% for count, worth in numerical_stats %}
+      {% for count, worth, label in numerical_stats %}
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Total Bids</h5>
+              <h5 class="card-title">{{label}}</h5>
               <p class="card-text">{{count}}</p>
               <h5 class="card-title">Worth</h5>
               <p class="card-text">{{worth}} BDT</p>

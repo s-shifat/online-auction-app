@@ -225,6 +225,7 @@ def view_dashboard(request):
 
     counts = [products.count(), number_of_live_auctions, number_of_auctions_completed]
     sums = [sum_of_all_products_worth, sum_of_live_products_worth, sum_of_completed_products_worth]
+    numerical_stat_labels = ['Total Bids', 'Live Bids', 'Completed Bids']
     auction_add_counts = (
         products
             .values('date_created')
@@ -237,7 +238,7 @@ def view_dashboard(request):
         'products': products,
         'bidders': bidders,
         'today': today,
-        'numerical_stats': zip(counts, sums),
+        'numerical_stats': zip(counts, sums, numerical_stat_labels),
         'creations': creation_dates,
         'auction_add_counts': auction_add_counts
     }
