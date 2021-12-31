@@ -1,5 +1,5 @@
 import datetime
-from django.db.models.aggregates import Max, Sum
+from django.db.models.aggregates import Count, Max, Sum
 import pytz
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -179,20 +179,22 @@ def delete_bid(request, pk):
 
     context = {'pk': pk, 'product': product, 'presentation': prompt_content}
     return render(request, 'accounts/delete_page.html', context)
-    
-
 
 ##############################################################################
+
+
 
 #---Admin Only---############################################################
 
 def view_dashboard(request):
+    "https://youtu.be/Gp0GFYHHPsM"
     products = AuctionProduct.objects.all()
+    creation_dates = [date['date_created'].isoformat() for date in products.values('date_created')]
     bidders = Bidder.objects.all()
     tz = pytz.timezone('Asia/Dhaka')
     today =  datetime.datetime.now(tz=tz)
-    live_auctions = products.filter(auction_end_date_time__gte=today) 
-    ended_auctions = products.filter(auction_end_date_time__lt=today) 
+    live_auctions = products.filter(auction_end_date_time__gte=today)
+    ended_auctions = products.filter(auction_end_date_time__lt=today)
     number_of_live_auctions = live_auctions.count()
     number_of_auctions_completed = ended_auctions.count()
 
@@ -223,14 +225,23 @@ def view_dashboard(request):
 
     counts = [products.count(), number_of_live_auctions, number_of_auctions_completed]
     sums = [sum_of_all_products_worth, sum_of_live_products_worth, sum_of_completed_products_worth]
-    
+    auction_add_counts = (
+        products
+            .values('date_created')
+            .annotate(count=Count('user_id'))
+            .order_by()
+    )
+    auction_add_counts = [c['count'] for c in auction_add_counts]
+    print(auction_add_counts)
     context = {
         'products': products,
         'bidders': bidders,
         'today': today,
         'numerical_stats': zip(counts, sums),
+        'creations': creation_dates,
+        'auction_add_counts': auction_add_counts
     }
-    return render(request, 'accounts/dashboard.html', context)
 
+    return render(request, 'accounts/dashboard.html', context)
 
 #############################################################################
